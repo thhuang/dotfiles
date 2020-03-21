@@ -2,10 +2,10 @@
 My dotfiles!
 
 ### [Spacemacs](./spacemacs)
-- Install font [Fira Code](https://github.com/tonsky/FiraCode/wiki/Installing)
+- Install font [UbuntuMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/UbuntuMono)
   ```bash
   $ brew tap homebrew/cask-fonts
-  $ brew cask install font-fira-code
+  $ brew cask install font-ubuntumono-nerd-font
   ```
 - Install [Ispell](https://en.wikipedia.org/wiki/Ispell) for spell checking
   ```bash
