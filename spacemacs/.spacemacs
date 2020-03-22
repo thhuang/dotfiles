@@ -40,13 +40,17 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      better-defaults
+     (dart :variables
+           dart-backend 'lsp
+           dart-format-on-save t)
      (go :variables
-         go-backend 'go-mode
+         go-backend 'lsp
          go-format-before-save t
          go-tab-width 4)
      emacs-lisp
      git
      helm
+     lsp
      markdown
      org
      (shell :variables
@@ -62,7 +66,8 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(flutter
+                                      highlight-indent-guides)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -318,6 +323,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'character)
+  (add-hook 'dart-mode-hook 'lsp)
+  (add-hook 'go-mode-hook 'lsp)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
