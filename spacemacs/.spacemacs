@@ -40,9 +40,6 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      better-defaults
-     (dart :variables
-           dart-backend 'lsp
-           dart-format-on-save t)
      (go :variables
          go-backend 'lsp
          go-format-before-save t
@@ -50,8 +47,11 @@ values."
      emacs-lisp
      git
      helm
-     lsp
+     javascript
+     (lsp :variables
+          lsp-ui-doc-enable nil)
      markdown
+     protobuf
      org
      (shell :variables
             shell-default-height 30
@@ -59,6 +59,8 @@ values."
      (spell-checking :variables
                      spell-checking-enable-by-default t)
      syntax-checking
+     (treemacs :variables treemacs-use-follow-mode 'tag)
+     typescript
      version-control
      yaml
      )
@@ -66,8 +68,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(flutter
-                                      highlight-indent-guides)
+   dotspacemacs-additional-packages '(highlight-indent-guides)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -146,7 +147,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("UbuntuMono Nerd Font"
-                               :size 16
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -325,7 +326,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'character)
-  (add-hook 'dart-mode-hook 'lsp)
   (add-hook 'go-mode-hook 'lsp)
   )
 
